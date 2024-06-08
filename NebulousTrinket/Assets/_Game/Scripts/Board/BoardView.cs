@@ -3,19 +3,21 @@ using UnityEngine.UI;
 
 namespace NebulousTrinket
 {
+    [RequireComponent(typeof(BoardController))]
     public class BoardView : MonoBehaviour
     {
         public GridLayoutGroup GridLayoutGroup;
-        public GameObject CardPrefab;
 
-        public void Initialize(BoardModel boardModel)
+        public void Initialize(BoardModel model)
         {
             GridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-            GridLayoutGroup.constraintCount = boardModel.Columns;
+            GridLayoutGroup.constraintCount = model.Columns;
 
-            for (int i = 0; i < boardModel.Rows * boardModel.Columns; i++)
+            for (int i = 0; i < model.Rows * model.Columns; i++)
             {
-                Instantiate(CardPrefab, GridLayoutGroup.transform);
+                FaceCardController faceCardController = Instantiate(model.CardPrefab, GridLayoutGroup.transform);
+                //TODO: Pass sprite param
+                faceCardController.Initialize();
             }
         }
     }

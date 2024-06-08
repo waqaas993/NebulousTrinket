@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace NebulousTrinket
 {
-    public class ConfigsController : BaseController
+    public class ConfigsController : BaseController, IInstance
     {
         private List<BaseConfigs> BaseConfigs = new();
 
