@@ -10,7 +10,7 @@ namespace NebulousTrinket
 
         void Awake() => Initialize();
         
-        public override void Initialize()
+        public override void Initialize(params object[] parameters)
         {
             foreach (var controller in Controllers)
             {

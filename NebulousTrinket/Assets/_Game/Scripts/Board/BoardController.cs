@@ -8,7 +8,7 @@ namespace NebulousTrinket
         private BoardView View;
         private BoardModel Model;
         
-        public override void Initialize()
+        public override void Initialize(params object[] parameters)
         {
             Model = new BoardModel(4, 4);
             View.Initialize(Model);

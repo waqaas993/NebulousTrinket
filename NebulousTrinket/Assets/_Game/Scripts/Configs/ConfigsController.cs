@@ -8,7 +8,7 @@ namespace NebulousTrinket
     {
         private List<BaseConfigs> BaseConfigs = new();
 
-        public override void Initialize()
+        public override void Initialize(params object[] parameters)
         {
             BaseConfigs = Resources.LoadAll<BaseConfigs>("Configs").ToList();
         }

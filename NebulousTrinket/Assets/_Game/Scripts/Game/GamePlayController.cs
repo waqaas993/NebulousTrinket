@@ -6,7 +6,7 @@ namespace NebulousTrinket
     {
         private GamePlayModel GamePlayModel;
 
-        public override void Initialize()
+        public override void Initialize(params object[] parameters)
         {
             GamePlayModel = new();
         }
