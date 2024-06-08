@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace NebulousTrinket
@@ -5,6 +6,8 @@ namespace NebulousTrinket
     public class GamePlayController : BaseController
     {
         private GamePlayModel GamePlayModel;
+
+        public static Action<string> OnCardMatched;
 
         public override void Initialize(params object[] parameters)
         {
@@ -25,7 +28,11 @@ namespace NebulousTrinket
 
         public void CardFlipped(ICard card)
         {
-            GamePlayModel.AddFlippedCard(card);
+            GamePlayModel.AddFlippedCard(card, out string cardMatchedID);
+            if (cardMatchedID != "")
+            {
+                OnCardMatched?.Invoke(cardMatchedID);
+            }
         }
 
         public void CardUnflipped(ICard card)

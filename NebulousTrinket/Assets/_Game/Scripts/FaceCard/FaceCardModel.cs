@@ -7,11 +7,13 @@ namespace NebulousTrinket
         public string ID { get => Sprite.name; }
         public bool IsFlipped { get; private set; }
         public Sprite Sprite { get; private set; }
+        public bool IsMatched { get; private set; }
 
         public FaceCardModel(Sprite sprite)
         {
             Sprite = sprite;
             IsFlipped = true;
+            IsMatched = false;
         }
 
         public bool Flip()
@@ -32,6 +34,11 @@ namespace NebulousTrinket
                 return true;
             }
             return false;
+        }
+
+        public void SetMatched(bool matched = true)
+        {
+            IsMatched = matched;
         }
     }
 }

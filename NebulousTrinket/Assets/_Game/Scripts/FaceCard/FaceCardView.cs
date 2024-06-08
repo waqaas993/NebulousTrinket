@@ -15,6 +15,7 @@ namespace NebulousTrinket
 
         private const string FLIP = "Flip";
         private const string UNFLIP = "Unflip";
+        private const string MATCHED = "Matched";
 
         private FaceCardModel Model;
 
@@ -33,6 +34,10 @@ namespace NebulousTrinket
             else
             {
                 Animator.SetTrigger(UNFLIP);
+            }
+            if (Model.IsMatched)
+            {
+                Animator.SetTrigger(MATCHED);
             }
         }
     }

@@ -6,14 +6,14 @@ namespace NebulousTrinket
     {
         private List<ICard> FlippedCards = new();
 
-        public bool AddFlippedCard(ICard card)
+        public void AddFlippedCard(ICard card, out string cardMatchedID)
         {
+            cardMatchedID = "";
             FlippedCards.Add(card);
             if (FlippedCards.Count == 2)
             {
-                return TryMatch();
+                TryMatch(out cardMatchedID);
             }
-            return false;
         }
 
         public void RemoveFlippedCard(ICard card)
@@ -21,11 +21,12 @@ namespace NebulousTrinket
             FlippedCards.Remove(card);
         }
 
-        private bool TryMatch()
+        private void TryMatch(out string cardMatchedID)
         {
+            cardMatchedID = "";
             if (FlippedCards[0].ID == FlippedCards[1].ID)
             {
-                return true;
+                cardMatchedID = FlippedCards[0].ID;
             }
             else
             {
@@ -35,7 +36,6 @@ namespace NebulousTrinket
                 }
                 FlippedCards.Clear();
             }
-            return false;
         }
     }
 }

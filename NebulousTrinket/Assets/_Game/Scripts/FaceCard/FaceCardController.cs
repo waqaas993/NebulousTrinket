@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace NebulousTrinket
 {
@@ -8,12 +9,29 @@ namespace NebulousTrinket
         private FaceCardModel Model;
         [SerializeField]
         private FaceCardView View;
+        [SerializeField]
+        private Button Button;
 
         public static Action<ICard> OnFlip;
         public static Action<ICard> OnUnflip;
 
         public string ID => Model.ID;
+        
+        private void OnEnable()
+        {
+            GamePlayController.OnCardMatched += CardMatched;
+        }
 
+        private void OnDisable()
+        {
+            GamePlayController.OnCardMatched -= CardMatched;
+        }
+
+        private void Awake()
+        {
+            Button.onClick.AddListener(Flip);
+        }
+        
         public override void Initialize(params object[] parameters)
         {
             if (parameters[0] is Sprite sprite1)
@@ -35,6 +53,10 @@ namespace NebulousTrinket
                 View.Refresh();
                 OnFlip?.Invoke(this);
             }
+            else
+            {
+                Unflip();
+            }
         }
 
         public void Unflip()
@@ -43,6 +65,16 @@ namespace NebulousTrinket
             {
                 View.Refresh();
                 OnUnflip?.Invoke(this);
+            }
+        }
+
+        private void CardMatched(string id)
+        {
+            bool isSelf = ID == id;
+            if (isSelf)
+            {
+                Model.SetMatched();
+                View.Refresh();
             }
         }
     }
