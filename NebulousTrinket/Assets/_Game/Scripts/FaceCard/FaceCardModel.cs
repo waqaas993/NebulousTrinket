@@ -11,7 +11,7 @@ namespace NebulousTrinket
         public FaceCardModel(Sprite sprite)
         {
             Sprite = sprite;
-            IsFlipped = false;
+            IsFlipped = true;
         }
 
         public bool Flip()

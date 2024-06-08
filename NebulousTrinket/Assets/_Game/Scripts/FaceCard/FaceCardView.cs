@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,16 +13,26 @@ namespace NebulousTrinket
         [SerializeField]
         private Image Image;
 
-        internal void Refresh(FaceCardModel model)
+        private const string FLIP = "Flip";
+        private const string UNFLIP = "Unflip";
+
+        private FaceCardModel Model;
+
+        internal void Initialize(FaceCardModel model)
         {
-            Image.sprite = model.Sprite;
-            if (model.IsFlipped)
+            Model = model;
+            Image.sprite = Model.Sprite;
+        }
+
+        internal void Refresh()
+        {
+            if (Model.IsFlipped)
             {
-                Animator.SetTrigger("Flip");
+                Animator.SetTrigger(FLIP);
             }
             else
             {
-                Animator.SetTrigger("Unflip");
+                Animator.SetTrigger(UNFLIP);
             }
         }
     }

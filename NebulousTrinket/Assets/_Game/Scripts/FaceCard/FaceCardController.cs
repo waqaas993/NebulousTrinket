@@ -20,7 +20,7 @@ namespace NebulousTrinket
             {
                 Sprite sprite = sprite1;
                 Model = new FaceCardModel(sprite);
-                View.Refresh(Model);
+                View.Initialize(Model);
             }
             else
             {
@@ -32,8 +32,8 @@ namespace NebulousTrinket
         {
             if (Model.Flip())
             {
-                View.Refresh(Model);
-                OnFlip.Invoke(this);
+                View.Refresh();
+                OnFlip?.Invoke(this);
             }
         }
 
@@ -41,8 +41,8 @@ namespace NebulousTrinket
         {
             if (Model.Unflip())
             {
-                View.Refresh(Model);
-                OnUnflip.Invoke(this);
+                View.Refresh();
+                OnUnflip?.Invoke(this);
             }
         }
     }
