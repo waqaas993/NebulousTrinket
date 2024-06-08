@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace NebulousTrinket
 {
     public class BoardModel
@@ -12,11 +14,13 @@ namespace NebulousTrinket
         internal int Columns;
 
         public FaceCardController CardPrefab => BoardConfigs.FaceCardPrefab;
+        public Sprite[] Sprites { get; private set; }
 
-        public BoardModel(int rows, int columns)
+        public BoardModel(int rows, int columns, Sprite[] sprites)
         {
             Rows = rows;
             Columns = columns;
+            Sprites = sprites;
         }
     }
 }

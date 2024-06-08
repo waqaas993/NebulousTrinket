@@ -8,16 +8,15 @@ namespace NebulousTrinket
 {
     public class DownloadAssetBundle : MonoBehaviour
     {
-        public void GetRandomSprites(int numberOfSprites, System.Action<Sprite[]> callback)
+        public static void GetRandomSprites<T>(T monoBehaviour, int numberOfSprites, System.Action<Sprite[]> callback) where T : MonoBehaviour
         {
-            StartCoroutine(DownloadAssetBundleFromLocalDirectory(numberOfSprites, callback));
+            monoBehaviour.StartCoroutine(DownloadAssetBundleFromLocalDirectory(numberOfSprites, callback));
         }
 
-        private IEnumerator DownloadAssetBundleFromLocalDirectory(int numberOfSprites, System.Action<Sprite[]> callback)
+        private static IEnumerator DownloadAssetBundleFromLocalDirectory(int numberOfSprites, System.Action<Sprite[]> callback)
         {
-            string assetBundleDirectoryPath = Application.dataPath + "/AssetBundles";
-            string assetBundlePath = Path.Combine(assetBundleDirectoryPath, "yourAssetBundleName");
-
+            string assetBundleDirectoryPath = Application.dataPath + "/AssetsBundles";
+            string assetBundlePath = Path.Combine(assetBundleDirectoryPath, "cartoon-faces-set");
             if (!File.Exists(assetBundlePath))
             {
                 Debug.LogWarning("Asset Bundle not found at path: " + assetBundlePath);

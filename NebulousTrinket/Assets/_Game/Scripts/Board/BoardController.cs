@@ -7,11 +7,21 @@ namespace NebulousTrinket
         [SerializeField]
         private BoardView View;
         private BoardModel Model;
-        
+
+        [SerializeField]
+        private int Rows;
+        [SerializeField]
+        private int Columns;
+
         public override void Initialize(params object[] parameters)
         {
-            Model = new BoardModel(5, 6);
-            View.Initialize(Model);
+            DownloadAssetBundle.GetRandomSprites(this, (Rows * Columns) / 2,
+                (Sprite[] sprites) =>
+                {
+                    Model = new BoardModel(Rows, Columns, sprites);
+                    View.Initialize(Model);
+                }
+            );
         }
     }
 }

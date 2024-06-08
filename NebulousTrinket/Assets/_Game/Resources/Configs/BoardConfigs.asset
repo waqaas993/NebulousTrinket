@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BoardConfigs
   m_EditorClassIdentifier: 
   IsRemote: 0
-  FaceCardPrefab: {fileID: 0}
+  FaceCardPrefab: {fileID: 1690327144136359151, guid: 3229e1d04349d984185eb0d2b5bc0ee2, type: 3}
