@@ -6,13 +6,14 @@ namespace NebulousTrinket
     {
         private List<ICard> FlippedCards = new();
 
-        public void AddFlippedCard(ICard card)
+        public bool AddFlippedCard(ICard card)
         {
             FlippedCards.Add(card);
             if (FlippedCards.Count == 2)
             {
-                TryMatch();
+                return TryMatch();
             }
+            return false;
         }
 
         public void RemoveFlippedCard(ICard card)

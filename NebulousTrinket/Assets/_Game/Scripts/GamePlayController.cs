@@ -11,6 +11,18 @@ namespace NebulousTrinket
             GamePlayModel = new();
         }
 
+        private void OnEnable()
+        {
+            ICard.OnFlip += CardFlipped;
+            ICard.OnUnflip += CardUnflipped;
+        }
+
+        private void OnDisable()
+        {
+            ICard.OnFlip -= CardFlipped;
+            ICard.OnUnflip -= CardUnflipped;
+        }
+
         public void CardFlipped(ICard card)
         {
             GamePlayModel.AddFlippedCard(card);
