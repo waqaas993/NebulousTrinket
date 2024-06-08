@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using UnityEditor;
 using UnityEngine;
 
-public class CreateAssetBundle : MonoBehaviour
+namespace NebulousTrinket
 {
-    // Start is called before the first frame update
-    void Start()
+    public class CreateAssetBundles
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [MenuItem("Assets/Create Assets Bundles")]
+        private static void BuildAllAssetBundles()
+        {
+            string assetBundleDirectoryPath = Application.dataPath + "/AssetsBundles";
+            Debug.Log(assetBundleDirectoryPath);
+            try
+            {
+                BuildPipeline.BuildAssetBundles(assetBundleDirectoryPath, BuildAssetBundleOptions.None, EditorUserBuildSettings.activeBuildTarget);
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning(e);
+            }
+        }
     }
 }
