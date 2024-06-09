@@ -5,7 +5,6 @@ using Random = UnityEngine.Random;
 
 namespace NebulousTrinket
 {
-    [RequireComponent(typeof(BoardController))]
     public class BoardView : MonoBehaviour
     {
         private Transform GridParent => transform;
@@ -36,6 +35,7 @@ namespace NebulousTrinket
                     StartCoroutine(SpawnFaceCard(3, model, spriteIndex, i));
                 }
             }
+            transform.position += new Vector3(1.5f, 0, 0);
         }
         
         private IEnumerator SpawnFaceCard(float delay, BoardModel model, int spriteIndex, int index)

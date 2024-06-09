@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace NebulousTrinket
 {
-    public class BoardController : BaseController
+    public class BoardController : BaseController, IInstance
     {
         [SerializeField]
         private BoardView View;
