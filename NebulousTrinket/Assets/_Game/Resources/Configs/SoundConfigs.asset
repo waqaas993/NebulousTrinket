@@ -16,21 +16,26 @@ MonoBehaviour:
   SoundDatas:
   - SoundType: 1
     Name: card_flipped
-    AudioClip: {fileID: 0}
+    AudioClip: {fileID: 8300000, guid: 4c3b6134a57f8af40b91a22182199283, type: 3}
     Volume: 1
+    Loop: 0
   - SoundType: 1
     Name: card_matched
-    AudioClip: {fileID: 0}
+    AudioClip: {fileID: 8300000, guid: 10b8b159a2a64c84998ff5c2b2a4745f, type: 3}
     Volume: 1
+    Loop: 0
   - SoundType: 1
     Name: card_unmatched
-    AudioClip: {fileID: 0}
+    AudioClip: {fileID: 8300000, guid: 9bf0e8a9d321c00418683c9c6b36977a, type: 3}
     Volume: 1
+    Loop: 0
   - SoundType: 0
     Name: game_over
-    AudioClip: {fileID: 0}
+    AudioClip: {fileID: 8300000, guid: 8cd4fecfcd564394ea288b6b63441c39, type: 3}
     Volume: 1
+    Loop: 0
   - SoundType: 0
     Name: background_music
-    AudioClip: {fileID: 0}
+    AudioClip: {fileID: 8300000, guid: 4182c2c83cbc4854cacdcbb11e790b62, type: 3}
     Volume: 1
+    Loop: 0
