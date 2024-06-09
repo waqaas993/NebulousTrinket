@@ -10,13 +10,10 @@ namespace NebulousTrinket
     [RequireComponent(typeof(BoardController))]
     public class BoardView : MonoBehaviour
     {
-        public GridLayoutGroup GridLayoutGroup;
+        private Transform GridParent => transform;
 
         public void Initialize(BoardModel model)
         {
-            GridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-            GridLayoutGroup.constraintCount = model.Columns;
-
             List<int> spriteIndexes = new();
             for (int i = 0; i < (model.Rows * model.Columns) / 2; i++)
             {
@@ -38,15 +35,25 @@ namespace NebulousTrinket
 
                 if (spriteIndex != -1)
                 {
-                    StartCoroutine(SpawnFaceCard(3, model, spriteIndex));
+                    StartCoroutine(SpawnFaceCard(3, model, spriteIndex, i));
                 }
             }
         }
-
-        private IEnumerator SpawnFaceCard(float delay, BoardModel model, int spriteIndex)
+        
+        private IEnumerator SpawnFaceCard(float delay, BoardModel model, int spriteIndex, int index)
         {
-            FaceCardController faceCardController = Instantiate(model.CardPrefab, transform, worldPositionStays: false);
+            FaceCardController faceCardController = Instantiate(model.CardPrefab, GridParent);
             faceCardController.Initialize(model.Sprites[spriteIndex]);
+
+            // Calculate position in the grid
+            int width = model.Columns;
+            int height = model.Rows;
+            int row = index / width;
+            int column = index % width;
+            Vector2 position = new(column - ((float)(width) / 2) + .5f, (height - row - 1) - ((float)height / 2) + .5f);
+            position = new(position.x * (model.CellSize.x + model.Spacing.x), position.y * (model.CellSize.y + model.Spacing.y));
+            faceCardController.transform.position = position;
+
             yield return new WaitForSeconds(delay);
             faceCardController.Unflip();
         }

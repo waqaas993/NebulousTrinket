@@ -15,6 +15,8 @@ namespace NebulousTrinket
 
         public FaceCardController CardPrefab => BoardConfigs.FaceCardPrefab;
         public Sprite[] Sprites { get; private set; }
+        public Vector2 CellSize => BoardConfigs.CellSize;
+        public Vector2 Spacing => BoardConfigs.Spacing;
 
         public BoardModel(int rows, int columns, Sprite[] sprites)
         {

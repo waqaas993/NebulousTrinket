@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace NebulousTrinket
 {
@@ -11,7 +9,7 @@ namespace NebulousTrinket
         [SerializeField]
         private Animator Animator;
         [SerializeField]
-        private Image Image;
+        private SpriteRenderer SpriteRenderer;
 
         private const string FLIP = "Flip";
         private const string UNFLIP = "Unflip";
@@ -22,7 +20,7 @@ namespace NebulousTrinket
         internal void Initialize(FaceCardModel model)
         {
             Model = model;
-            Image.sprite = Model.Sprite;
+            SpriteRenderer.sprite = Model.Sprite;
         }
 
         internal void Refresh()

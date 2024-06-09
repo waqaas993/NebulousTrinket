@@ -9,8 +9,6 @@ namespace NebulousTrinket
         private FaceCardModel Model;
         [SerializeField]
         private FaceCardView View;
-        [SerializeField]
-        private Button Button;
 
         public static Action<ICard> OnFlip;
         public static Action<ICard> OnUnflip;
@@ -19,19 +17,24 @@ namespace NebulousTrinket
         
         private void OnEnable()
         {
+            GamePlayController.OnCardHit += CardHit;
             GamePlayController.OnCardMatched += CardMatched;
         }
 
         private void OnDisable()
         {
+            GamePlayController.OnCardHit -= CardHit;
             GamePlayController.OnCardMatched -= CardMatched;
         }
 
-        private void Awake()
+        private void CardHit(ICard card)
         {
-            Button.onClick.AddListener(Flip);
+            if (this == (FaceCardController)card)
+            {
+                Flip();
+            }
         }
-        
+
         public override void Initialize(params object[] parameters)
         {
             if (parameters[0] is Sprite sprite1)
@@ -52,10 +55,6 @@ namespace NebulousTrinket
             {
                 View.Refresh();
                 OnFlip?.Invoke(this);
-            }
-            else
-            {
-                Unflip();
             }
         }
 
