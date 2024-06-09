@@ -9,7 +9,7 @@ namespace NebulousTrinket
         [SerializeField]
         private Animator Animator;
         [SerializeField]
-        private SpriteRenderer SpriteRenderer;
+        private SpriteRenderer[] SpriteRenderers;
 
         private const string FLIP = "Flip";
         private const string UNFLIP = "Unflip";
@@ -20,7 +20,10 @@ namespace NebulousTrinket
         internal void Initialize(FaceCardModel model)
         {
             Model = model;
-            SpriteRenderer.sprite = Model.Sprite;
+            foreach (SpriteRenderer spriteRenderer in SpriteRenderers)
+            {
+                spriteRenderer.sprite = Model.Sprite;
+            }
         }
 
         internal void Refresh()

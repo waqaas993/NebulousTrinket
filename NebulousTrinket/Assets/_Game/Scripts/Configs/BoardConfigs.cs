@@ -7,6 +7,8 @@ namespace NebulousTrinket
     {
         public FaceCardController FaceCardPrefab;
 
+        public int Rows;
+        public int Columns;
         public Vector2 CellSize;
         public Vector2 Spacing;
     }

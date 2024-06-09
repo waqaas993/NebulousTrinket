@@ -247,6 +247,52 @@ MonoBehaviour:
   - {fileID: 1872671420}
   - {fileID: 2102891565}
   - {fileID: 1958764331}
+  - {fileID: 284444200}
+--- !u!1 &284444198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 284444199}
+  - component: {fileID: 284444200}
+  m_Layer: 0
+  m_Name: Board Screen Size Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &284444199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284444198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 391809176}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &284444200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284444198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ffb62687c6f2545adb37b8d5476edc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  View: {fileID: 1958764334}
 --- !u!1 &391809175
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +324,7 @@ Transform:
   - {fileID: 186902950}
   - {fileID: 1872671419}
   - {fileID: 2102891564}
+  - {fileID: 284444199}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -556,6 +603,7 @@ GameObject:
   - component: {fileID: 1958764333}
   - component: {fileID: 1958764331}
   - component: {fileID: 1958764330}
+  - component: {fileID: 1958764334}
   m_Layer: 5
   m_Name: Board
   m_TagString: Untagged
@@ -575,8 +623,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66bef1c9ee135247825846316141505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CellSize: {x: 5, y: 5}
-  Spacing: {x: 1, y: 1}
 --- !u!114 &1958764331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,8 +636,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   View: {fileID: 1958764330}
-  Rows: 5
-  Columns: 6
 --- !u!4 &1958764333
 Transform:
   m_ObjectHideFlags: 0
@@ -607,6 +651,18 @@ Transform:
   m_Father: {fileID: 1187143921}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1958764334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958764327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a77bf969ef6a343ad7e6502ca1f5d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2027592362
 GameObject:
   m_ObjectHideFlags: 0

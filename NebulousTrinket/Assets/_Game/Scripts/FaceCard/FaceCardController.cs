@@ -14,7 +14,8 @@ namespace NebulousTrinket
         public static Action<ICard> OnUnflip;
 
         public string ID => Model.ID;
-        
+        public Sprite Sprite => Model.Sprite;
+
         private void OnEnable()
         {
             GamePlayController.OnCardHit += CardHit;
@@ -37,9 +38,8 @@ namespace NebulousTrinket
 
         public override void Initialize(params object[] parameters)
         {
-            if (parameters[0] is Sprite sprite1)
+            if (parameters[0] is Sprite sprite)
             {
-                Sprite sprite = sprite1;
                 Model = new FaceCardModel(sprite);
                 View.Initialize(Model);
             }
