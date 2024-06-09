@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsRemote: 0
   FaceCardPrefab: {fileID: 1690327144136359151, guid: 3229e1d04349d984185eb0d2b5bc0ee2, type: 3}
-  Rows: 10
-  Columns: 10
+  Rows: 5
+  Columns: 6
   CellSize: {x: 1, y: 1}
-  Spacing: {x: 0.5, y: 0.5}
+  Spacing: {x: 0.75, y: 0.75}

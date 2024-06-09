@@ -41,6 +41,14 @@ namespace NebulousTrinket
                 Animator.SetTrigger(MATCHED);
             }
         }
+
+        /// <summary>
+        /// Animation Event
+        /// </summary>
+        public void DestroyMe() 
+        {
+            Destroy(gameObject);
+        }
     }
 
 }

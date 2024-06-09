@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace NebulousTrinket
 {
@@ -10,8 +9,8 @@ namespace NebulousTrinket
         [SerializeField]
         private FaceCardView View;
 
-        public static Action<ICard> OnFlip;
-        public static Action<ICard> OnUnflip;
+        public static Action<FaceCardController> OnFlip;
+        public static Action<FaceCardController> OnUnflip;
 
         public string ID => Model.ID;
         public Sprite Sprite => Model.Sprite;

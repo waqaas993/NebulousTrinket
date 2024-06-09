@@ -1,41 +1,65 @@
+using System.Linq;
 using System.Collections.Generic;
 
 namespace NebulousTrinket
 {
+    public enum CardStatus
+    {
+        None,
+        Matched,
+        Unmatched
+    }
+
     public class GamePlayModel
     {
-        private List<ICard> FlippedCards = new();
+        public Stack<ICard> Cards { get; private set; }
+        public CardStatus CardStatus 
+        {
+            get
+            {
+                if (Cards.Count == 2)
+                {
+                    string lastCardID = Cards.Last().ID;
+                    int matchedCardsCount = Cards.Where(fc => fc.ID == lastCardID).Count();
+                    return matchedCardsCount >= 2 ? CardStatus.Matched : CardStatus.Unmatched;
+                }
+                return CardStatus.None;
+            }
+        }
+
+        public GamePlayModel()
+        {
+            Cards = new();
+        }
 
         public void AddFlippedCard(ICard card, out string cardMatchedID)
         {
             cardMatchedID = "";
-            FlippedCards.Add(card);
-            if (FlippedCards.Count == 2)
+            Cards.Push(card);
+            if (Cards.Count == 2)
             {
                 TryMatch(out cardMatchedID);
             }
         }
-
-        public void RemoveFlippedCard(ICard card)
-        {
-            FlippedCards.Remove(card);
-        }
-
+        
         private void TryMatch(out string cardMatchedID)
         {
             cardMatchedID = "";
-            if (FlippedCards[0].ID == FlippedCards[1].ID)
+            string lastCardID = Cards.Last().ID;
+            int matchedCardsCount = Cards.Where(fc => fc.ID == lastCardID).Count();
+            if (matchedCardsCount >= 2)
             {
-                cardMatchedID = FlippedCards[0].ID;
+                cardMatchedID = lastCardID;
             }
-            else
+        }
+
+        public void ResetCards()
+        {
+            do
             {
-                foreach (var card in FlippedCards)
-                {
-                    card.Unflip();
-                }
-                FlippedCards.Clear();
-            }
+                ICard card = Cards.Pop();
+                card.Unflip();
+            } while (Cards.Count != 0);
         }
     }
 }
