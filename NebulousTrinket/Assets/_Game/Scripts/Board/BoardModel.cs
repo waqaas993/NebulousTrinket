@@ -4,19 +4,19 @@ namespace NebulousTrinket
 {
     public class BoardModel
     {
-        private BoardConfigs _BoardConfigs;
+        private BoardConfigs _Configs;
         private ConfigsController _ConfigsController;
 
-        private BoardConfigs BoardConfigs => _BoardConfigs ?? (_BoardConfigs = ConfigsController.GetConfig<BoardConfigs>());
+        private BoardConfigs Configs => _Configs ?? (_Configs = ConfigsController.GetConfig<BoardConfigs>());
         private ConfigsController ConfigsController => _ConfigsController ?? (_ConfigsController = SingletonController<ConfigsController>.Instance);
 
 
-        public FaceCardController CardPrefab => BoardConfigs.FaceCardPrefab;
+        public FaceCardController CardPrefab => Configs.FaceCardPrefab;
         public Sprite[] Sprites { get; private set; }
-        public int Rows => BoardConfigs.Rows;
-        public int Columns => BoardConfigs.Columns;
-        public Vector2 Spacing => BoardConfigs.Spacing;
-        public Vector2 CellSize => BoardConfigs.CellSize;
+        public int Rows => Configs.Rows;
+        public int Columns => Configs.Columns;
+        public Vector2 Spacing => Configs.Spacing;
+        public Vector2 CellSize => Configs.CellSize;
 
         public void Initialize(Sprite[] sprites)
         {
