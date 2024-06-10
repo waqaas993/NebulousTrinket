@@ -11,6 +11,11 @@ namespace NebulousTrinket
         public override void Initialize(params object[] parameters)
         {
             Model = new BoardModel();
+            if (Model.Rows * Model.Columns % 2 != 0)
+            {
+                Debug.LogError($"Re-adjust rows and columns for possible card pairs!");
+                return;
+            }
             DownloadAssetBundle.GetRandomSprites(this, (Model.Rows * Model.Columns) / 2,
                 (Sprite[] sprites) =>
                 {
