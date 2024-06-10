@@ -34,7 +34,7 @@ namespace NebulousTrinket
         public override void Initialize(params object[] parameters)
         {
             View.Initialize();
-            View.OnRestart += SendOnRestart;
+            View.OnRestart += SendOnRestartSignal;
         }
         
         private void Refresh()
@@ -42,7 +42,7 @@ namespace NebulousTrinket
             View.Refresh(ScoreSystemController.Matches, ScoreSystemController.Turns);
         }
 
-        private void SendOnRestart()
+        private void SendOnRestartSignal()
         {
             OnRestart?.Invoke();
         }

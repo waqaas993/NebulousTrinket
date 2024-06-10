@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace NebulousTrinket
@@ -7,7 +8,9 @@ namespace NebulousTrinket
         [SerializeField]
         private BoardView View;
         private BoardModel Model;
-        
+
+        public static Action OnBoardGenerated;
+
         public override void Initialize(params object[] parameters)
         {
             Model = new BoardModel();
@@ -23,6 +26,12 @@ namespace NebulousTrinket
                     View.Initialize(Model);
                 }
             );
+            View.OnBoardGenerated += SendBoardGeneratedSignal;
+        }
+
+        private void SendBoardGeneratedSignal()
+        {
+            OnBoardGenerated?.Invoke();
         }
     }
 }

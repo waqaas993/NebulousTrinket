@@ -25,8 +25,8 @@ namespace NebulousTrinket
 
             float widthSize = worldScreenWidth / width;
             widthSize /= 3;
-            //Take 1.9/3 parts of the screen
-            widthSize *= 1.9f;
+            //Take 1.6/3 parts of the screen
+            widthSize *= 1.6f;
 
             float size;
             if (boardWidth >= boardHeight)
@@ -35,8 +35,8 @@ namespace NebulousTrinket
             {
                 size = worldScreenHeight / height;
                 size /= 3;
-                //Take 2.7/3 of screen height
-                size *= 2.7f;
+                //Take 2.4/3 of screen height
+                size *= 2.4f;
 
                 //override if it exceeds width
                 if (size >= widthSize)

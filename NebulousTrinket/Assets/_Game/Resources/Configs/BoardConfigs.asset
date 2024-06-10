@@ -17,4 +17,4 @@ MonoBehaviour:
   Rows: 5
   Columns: 6
   CellSize: {x: 1, y: 1}
-  Spacing: {x: 0.75, y: 0.75}
+  Spacing: {x: 0.1, y: 0.1}

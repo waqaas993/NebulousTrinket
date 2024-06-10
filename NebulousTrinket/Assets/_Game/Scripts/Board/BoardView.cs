@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +9,8 @@ namespace NebulousTrinket
     public class BoardView : MonoBehaviour
     {
         private Transform GridParent => transform;
+
+        public Action OnBoardGenerated;
 
         public void Initialize(BoardModel model)
         {
@@ -37,6 +40,8 @@ namespace NebulousTrinket
                     StartCoroutine(SpawnFaceCard(3, model, spriteIndex, i));
                 }
             }
+
+            StartCoroutine(SendBoardGeneratedSignal());
         }
 
         private void DeleteFaceCards()
@@ -64,9 +69,14 @@ namespace NebulousTrinket
             Vector2 position = new(column - ((float)(width) / 2) + .5f, (height - row - 1) - ((float)height / 2) + .5f);
             position = new(position.x * (model.CellSize.x + model.Spacing.x) + xOffset, position.y * (model.CellSize.y + model.Spacing.y));
             faceCardController.transform.position = position;
-
             yield return new WaitForSeconds(delay);
             faceCardController.Unflip();
+        }
+
+        private IEnumerator SendBoardGeneratedSignal()
+        {
+            yield return new WaitForEndOfFrame();
+            OnBoardGenerated?.Invoke();
         }
     }
 }

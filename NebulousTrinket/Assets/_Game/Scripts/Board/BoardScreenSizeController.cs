@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace NebulousTrinket
@@ -8,9 +9,24 @@ namespace NebulousTrinket
         [SerializeField]
         private BoardScreenSizeView View;
 
+        private void OnEnable()
+        {
+            BoardController.OnBoardGenerated += BoardGenerated;
+        }
+
+        private void OnDisable()
+        {
+            BoardController.OnBoardGenerated -= BoardGenerated;
+        }
+        
         public override void Initialize(params object[] parameters)
         {
             Model = new();
+            
+        }
+        
+        private void BoardGenerated()
+        {
             View.Resize(Model);
         }
     }
