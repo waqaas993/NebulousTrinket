@@ -28,6 +28,10 @@ namespace NebulousTrinket
 
         internal void Refresh()
         {
+            if (Model == null || Animator == null)
+            {
+                return;
+            }
             if (Model.IsFlipped)
             {
                 Animator.SetTrigger(FLIP);

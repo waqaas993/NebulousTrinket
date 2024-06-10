@@ -55,6 +55,10 @@ namespace NebulousTrinket
 
         public void ResetCards()
         {
+            if (Cards.Count == 0)
+            {
+                return;
+            }
             do
             {
                 ICard card = Cards.Pop();
