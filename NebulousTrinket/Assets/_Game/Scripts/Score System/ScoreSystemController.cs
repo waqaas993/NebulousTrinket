@@ -1,3 +1,5 @@
+using System;
+
 namespace NebulousTrinket
 {
     public class ScoreSystemController : BaseController, IInstance
@@ -11,18 +13,17 @@ namespace NebulousTrinket
         {
             GamePlayController.OnCardMatched += CardMatched;
             GamePlayController.OnCardsUnmatched += CardsUnmatched;
+            LevelController.OnStart += LevelStarted;
         }
 
         private void OnDisable()
         {
             GamePlayController.OnCardMatched -= CardMatched;
             GamePlayController.OnCardsUnmatched -= CardsUnmatched;
+            LevelController.OnStart -= LevelStarted;
         }
 
-        public override void Initialize(params object[] parameters)
-        {
-            Model = new(0,0);
-        }
+        public override void Initialize(params object[] parameters) => LevelStarted();
 
         private void CardMatched(string obj)
         {
@@ -32,7 +33,9 @@ namespace NebulousTrinket
 
         private void CardsUnmatched(string arg1, string arg2)
         {
-            Model.IncreaseMatches();
+            Model.IncreaseTurns();
         }
+
+        private void LevelStarted() => Model = new(0, 0);
     }
 }

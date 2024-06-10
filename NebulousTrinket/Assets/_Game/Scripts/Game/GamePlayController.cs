@@ -26,12 +26,16 @@ namespace NebulousTrinket
         private void OnEnable()
         {
             FaceCardController.OnFlip += CardFlipped;
+            LevelController.OnStart += LevelStarted;
         }
 
         private void OnDisable()
         {
             FaceCardController.OnFlip -= CardFlipped;
+            LevelController.OnStart -= LevelStarted;
         }
+
+        private void LevelStarted() => ResetCards(0);
 
         private void Update()
         {

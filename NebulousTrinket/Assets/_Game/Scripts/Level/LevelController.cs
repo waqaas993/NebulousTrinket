@@ -9,10 +9,10 @@ namespace NebulousTrinket
 
         private LevelModel Model;
 
-        public Action Restarted;
-        public Action Started;
-        public Action Failed;
-        public Action Completed;
+        public static Action OnRestart;
+        public static Action OnStart;
+        public static Action OnFail;
+        public static Action OnComplete;
 
         private void OnEnable()
         {
@@ -28,14 +28,14 @@ namespace NebulousTrinket
         {
             Model = new();
             BoardController.Initialize();
-            Started?.Invoke();
+            OnStart?.Invoke();
         }
 
         //Re-initialize; temporary
         private void LevelRestarted()
         {
             Initialize();
-            Restarted?.Invoke();
+            OnRestart?.Invoke();
         }
     }
 }

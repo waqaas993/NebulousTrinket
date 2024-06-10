@@ -15,24 +15,30 @@ namespace NebulousTrinket
 
         private void OnEnable()
         {
-
+            GamePlayController.OnCardMatched += CardMatched;
+            GamePlayController.OnCardsUnmatched += CardsUnmatched;
+            LevelController.OnStart += LevelStarted;
         }
 
         private void OnDisable()
         {
-
+            GamePlayController.OnCardMatched -= CardMatched;
+            GamePlayController.OnCardsUnmatched -= CardsUnmatched;
+            LevelController.OnStart -= LevelStarted;
         }
+
+        private void CardMatched(string obj) => Refresh();
+        private void CardsUnmatched(string arg1, string arg2) => Refresh();
+        private void LevelStarted() => Refresh();
 
         public override void Initialize(params object[] parameters)
         {
             View.Initialize();
             View.OnRestart += SendOnRestart;
         }
-
-        private void Update()
+        
+        private void Refresh()
         {
-            //TODO: Shouldn't be in update, and instead should be subscribed to actions, doing it this way
-            //Since I'm running out of time
             View.Refresh(ScoreSystemController.Matches, ScoreSystemController.Turns);
         }
 
