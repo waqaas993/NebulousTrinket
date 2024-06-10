@@ -30,18 +30,31 @@ namespace NebulousTrinket
                     }
                 } while (spriteIndex == -1);
 
+                DeleteFaceCards();
+
                 if (spriteIndex != -1)
                 {
                     StartCoroutine(SpawnFaceCard(3, model, spriteIndex, i));
                 }
             }
-            transform.position += new Vector3(1.5f, 0, 0);
+        }
+
+        private void DeleteFaceCards()
+        {
+            for (int i = transform.childCount - 1; i >= 0 ; i--)
+            {
+                DestroyImmediate(transform.GetChild(i).gameObject);
+            }
         }
         
         private IEnumerator SpawnFaceCard(float delay, BoardModel model, int spriteIndex, int index)
         {
+            yield return new WaitForEndOfFrame();
+
             FaceCardController faceCardController = Instantiate(model.CardPrefab, GridParent);
             faceCardController.Initialize(model.Sprites[spriteIndex]);
+
+            float xOffset = 1.5f;
 
             // Calculate position in the grid
             int width = model.Columns;
@@ -49,7 +62,7 @@ namespace NebulousTrinket
             int row = index / width;
             int column = index % width;
             Vector2 position = new(column - ((float)(width) / 2) + .5f, (height - row - 1) - ((float)height / 2) + .5f);
-            position = new(position.x * (model.CellSize.x + model.Spacing.x), position.y * (model.CellSize.y + model.Spacing.y));
+            position = new(position.x * (model.CellSize.x + model.Spacing.x) + xOffset, position.y * (model.CellSize.y + model.Spacing.y));
             faceCardController.transform.position = position;
 
             yield return new WaitForSeconds(delay);
